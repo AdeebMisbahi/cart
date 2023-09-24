@@ -11,7 +11,7 @@ class CartItem extends React.Component {
         }
       }
     increaseQuantity(){
-        console.log('test')
+        console.log('this', this)
       }
       
     render(){
