@@ -9,7 +9,10 @@ class CartItem extends React.Component {
             qty: 1,
             img: ''
         }
+        // Bind 'this' to the increaseQuantity method
+    this.increaseQuantity = this.increaseQuantity.bind(this);
       }
+      
     increaseQuantity(){
         console.log('this', this)
       }
