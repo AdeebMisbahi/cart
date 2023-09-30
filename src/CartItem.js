@@ -1,13 +1,13 @@
 import React from "react";
+import { useState } from "react";
 
-class CartItem extends React.Component {
-    render(){
-          const {price , title, qty, id}= this.props.product;
+function CartItem(props){
+          const {price , title, qty, id}= props.product;
           const {
-            product ,
+            product,
             onIncreaseQuantity,
             onDecreaseQuantity,
-            onDeleteProduct  }= this.props;
+            onDeleteProduct  }= props;
          return(
          <div className="cart-item">
 
@@ -27,7 +27,7 @@ class CartItem extends React.Component {
          </div>
          )
       }
-}
+
 const styles={
     image:{
         height: 110,
