@@ -1,8 +1,6 @@
 import React from "react";
-import { useState } from "react";
-
 function CartItem(props){
-          const {price , title, qty, id}= props.product;
+          const {price , img, title, qty, id}= props.product;
           const {
             product,
             onIncreaseQuantity,
@@ -12,7 +10,7 @@ function CartItem(props){
          <div className="cart-item">
 
             <div className="left-block">
-               <img style={styles.image} alt=""/>
+               <img src={img} style={styles.image} alt=""/>
             </div>
          <div className="right-block">
             <div style={ {fontSize: 25} }> {title}</div>

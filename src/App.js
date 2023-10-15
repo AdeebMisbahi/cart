@@ -1,36 +1,27 @@
 import React from "react";
 import Cart from "./Cart";
 import Nav from "./Nav";
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: [
-        {
-          price: 1999,
-          title: 'Phone',
-          qty: 1,
-          img: '',
-          id: 1
-        },
-        {
-          price: 999,
-          title: 'Watch',
-          qty: 1,
-          img: '',
-          id: 2
-        },
-        {
-          price: 199,
-          title: 'Pen',
-          qty: 10,
-          img: '',
-          id: 3
-        }
-      ]
+      products: []
     }
   }
+  async componentDidMount() {
+    const db = getFirestore();
+
+    const querySnapshot = await getDocs(collection(db, 'products'));
+
+    const products = querySnapshot.docs.map(doc => doc.data());
+
+    this.setState({
+      products: products
+    });
+  }
+
 
   handleIncreaseQuantity = (product) => {
     const { products } = this.state;
@@ -74,8 +65,9 @@ class App extends React.Component {
     let total=0;
     products.map(product=>{
       total+=product.qty*product.price;
+      return ''
     })
-    return total
+    return total;
   }
   render() {
     const { products } = this.state;
